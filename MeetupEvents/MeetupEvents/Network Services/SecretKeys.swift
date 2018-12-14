@@ -9,7 +9,7 @@
 import Foundation
 
 class SecretKeys {
-  static let APIKey = "YOUR API GOES HERE"
+  static let APIKey = ""
   // clientId
   // secretKey
 }

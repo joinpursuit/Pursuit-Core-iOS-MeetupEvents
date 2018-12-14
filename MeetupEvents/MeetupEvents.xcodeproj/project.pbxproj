@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5728A3AD21C41FC7007BACAB /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728A3AC21C41FC7007BACAB /* ImageHelper.swift */; };
+		5728A3AF21C424AA007BACAB /* MeetupDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728A3AE21C424AA007BACAB /* MeetupDetailController.swift */; };
+		5728A3B121C4395B007BACAB /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728A3B021C4395B007BACAB /* String+Extensions.swift */; };
+		5728A3B721C43D6E007BACAB /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728A3B621C43D6E007BACAB /* Date+Extensions.swift */; };
+		5728A3B921C44837007BACAB /* RSVP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5728A3B821C44837007BACAB /* RSVP.swift */; };
 		574C7AB421C1619F004D1311 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7AB321C1619F004D1311 /* AppDelegate.swift */; };
 		574C7AB621C1619F004D1311 /* MeetupEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7AB521C1619F004D1311 /* MeetupEventsController.swift */; };
 		574C7AB921C1619F004D1311 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 574C7AB721C1619F004D1311 /* Main.storyboard */; };
@@ -19,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5728A3AC21C41FC7007BACAB /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		5728A3AE21C424AA007BACAB /* MeetupDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupDetailController.swift; sourceTree = "<group>"; };
+		5728A3B021C4395B007BACAB /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		5728A3B621C43D6E007BACAB /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		5728A3B821C44837007BACAB /* RSVP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVP.swift; sourceTree = "<group>"; };
 		574C7AB021C1619F004D1311 /* MeetupEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetupEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		574C7AB321C1619F004D1311 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		574C7AB521C1619F004D1311 /* MeetupEventsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupEventsController.swift; sourceTree = "<group>"; };
@@ -43,6 +53,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5728A3B221C43C83007BACAB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				574C7AB521C1619F004D1311 /* MeetupEventsController.swift */,
+				5728A3AE21C424AA007BACAB /* MeetupDetailController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5728A3B321C43C8B007BACAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				574C7AC621C1620F004D1311 /* Event.swift */,
+				5728A3B821C44837007BACAB /* RSVP.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5728A3B421C43C99007BACAB /* Network Services */ = {
+			isa = PBXGroup;
+			children = (
+				574C7ACC21C17534004D1311 /* NetworkHelper.swift */,
+				5728A3AC21C41FC7007BACAB /* ImageHelper.swift */,
+				574C7ACA21C16842004D1311 /* SecretKeys.swift */,
+				574C7AC821C16716004D1311 /* MeetupAPIClient.swift */,
+			);
+			path = "Network Services";
+			sourceTree = "<group>";
+		};
+		5728A3B521C43CC3007BACAB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5728A3B021C4395B007BACAB /* String+Extensions.swift */,
+				5728A3B621C43D6E007BACAB /* Date+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		574C7AA721C1619F004D1311 = {
 			isa = PBXGroup;
 			children = (
@@ -62,11 +110,10 @@
 		574C7AB221C1619F004D1311 /* MeetupEvents */ = {
 			isa = PBXGroup;
 			children = (
-				574C7AB521C1619F004D1311 /* MeetupEventsController.swift */,
-				574C7AC621C1620F004D1311 /* Event.swift */,
-				574C7ACC21C17534004D1311 /* NetworkHelper.swift */,
-				574C7ACA21C16842004D1311 /* SecretKeys.swift */,
-				574C7AC821C16716004D1311 /* MeetupAPIClient.swift */,
+				5728A3B421C43C99007BACAB /* Network Services */,
+				5728A3B321C43C8B007BACAB /* Models */,
+				5728A3B221C43C83007BACAB /* Controllers */,
+				5728A3B521C43CC3007BACAB /* Extensions */,
 				574C7AB721C1619F004D1311 /* Main.storyboard */,
 				574C7AC521C161C4004D1311 /* Supporting Files */,
 				574C7ABF21C161A0004D1311 /* Info.plist */,
@@ -158,9 +205,14 @@
 				574C7AB621C1619F004D1311 /* MeetupEventsController.swift in Sources */,
 				574C7AC921C16716004D1311 /* MeetupAPIClient.swift in Sources */,
 				574C7AC721C1620F004D1311 /* Event.swift in Sources */,
+				5728A3B721C43D6E007BACAB /* Date+Extensions.swift in Sources */,
 				574C7AB421C1619F004D1311 /* AppDelegate.swift in Sources */,
+				5728A3B121C4395B007BACAB /* String+Extensions.swift in Sources */,
+				5728A3B921C44837007BACAB /* RSVP.swift in Sources */,
 				574C7ACD21C17534004D1311 /* NetworkHelper.swift in Sources */,
 				574C7ACB21C16842004D1311 /* SecretKeys.swift in Sources */,
+				5728A3AF21C424AA007BACAB /* MeetupDetailController.swift in Sources */,
+				5728A3AD21C41FC7007BACAB /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

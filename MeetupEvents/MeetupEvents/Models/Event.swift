@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct EventData: Codable {
+  let events: [Event]
+}
+
 struct Event: Codable {
   let created: TimeInterval?
   let duration: TimeInterval?
@@ -15,11 +19,30 @@ struct Event: Codable {
   let name: String
   let status: String?
   let time: TimeInterval
-  let local_date: String
-  let local_time: String
+  let localDate: String?
+  let localTime: String? // local_time
   let updated: TimeInterval?
-  let waitlist_count: Int
-  let yes_rsvp_count: Int
+  let waitListCount: Int?
+  let yesRSVPCount: Int?
+  // using enum CodingKeys to change property names
+  private enum CodingKeys: String, CodingKey {
+    case created
+    case duration
+    case id
+    case name
+    case status
+    case time
+    case localDate = "local_date" // type alias
+    case localTime = "local_time"
+    case updated
+    case waitListCount = "waitlist_count"
+    case yesRSVPCount = "yes_rsvp_count"
+    case venue
+    case group
+    case link
+    case description
+    case visibility
+  }
   struct Venue: Codable {
     let id: Int
     let name: String
@@ -32,6 +55,7 @@ struct Event: Codable {
     let localized_country_name: String
     let zip: String?
     let state: String?
+    // TODO: coding keys
   }
   let venue: Venue?
   struct Group: Codable {

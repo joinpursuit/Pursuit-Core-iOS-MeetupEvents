@@ -10,9 +10,9 @@ import Foundation
 
 final class MeetupAPIClient {
   
-  static func searchEvents(keyword: String) {
+  static func searchEvents(keyword: String, completionHandler: @escaping (Error?, [Event]?) -> Void) {
     // endpoint
-    let urlString = "https://api.meetup.com/find/events?key=\(SecretKeys.APIKey)&fields=group_photo&text=\(keyword)&lat=40.72&lon=-73.84"
+    let urlString = "https://api.meetup.com/find/upcoming_events?key=\(SecretKeys.APIKey)&fields=group_photo&text=\(keyword)"
     guard let url = URL(string: urlString) else {
       print("badURL: \(urlString)")
       return
@@ -24,19 +24,19 @@ final class MeetupAPIClient {
         print("response status code is \(response.statusCode)")
       }
       if let error = error {
-        print("error: \(error)")
+        completionHandler(error, nil)
       } else if let data = data {
         // decoding of JSON using JSONDecoder()
         // can throw and error so needs to be wrapped in a
         // do{} catch{}
         do {
-          let events = try JSONDecoder().decode([Event].self, from: data)
-          print("found \(events.count) events")
+          let eventData = try JSONDecoder().decode(EventData.self, from: data)
+          // closure captures value from network response
+          completionHandler(nil, eventData.events)
         } catch {
-          print("decoding error: \(error)")
+          completionHandler(error, nil)
         }
       }
-      
     }.resume()
   }
   
@@ -59,7 +59,19 @@ final class MeetupAPIClient {
   }
   
   static func updateRSVP() {
-    let urlString = "https://api.meetup.com/2/rsvp?key=\(SecretKeys.APIKey)&event_id=256944810&rsvp=yes "
+    let urlString = "https://api.meetup.com/2/rsvp?key=\(SecretKeys.APIKey)&event_id=256944810&rsvp=yes"
+    NetworkHelper.performDataTask(urlString: urlString, httpMethod: "POST") { (error, data) in
+      if let error = error {
+        print("error: \(error)")
+      } else if let data = data {
+        do {
+          let rsvp = try JSONDecoder().decode(RSVP.self, from: data)
+          print(rsvp.venue.name)
+        } catch {
+          print("decoding error: \(error)")
+        }
+      }
+    }
   }
   
   
