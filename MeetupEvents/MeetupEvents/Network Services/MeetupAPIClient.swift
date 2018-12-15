@@ -58,21 +58,21 @@ final class MeetupAPIClient {
     }
   }
   
-  static func updateRSVP() {
-    let urlString = "https://api.meetup.com/2/rsvp?key=\(SecretKeys.APIKey)&event_id=256944810&rsvp=yes"
+  static func updateRSVP(eventId: String,
+                         rsvpStatus: String,
+                         completionHandler: @escaping(Error?, RSVP?) -> Void) {
+    let urlString = "https://api.meetup.com/2/rsvp?key=\(SecretKeys.APIKey)&event_id=\(eventId)&rsvp=\(rsvpStatus)"
     NetworkHelper.performDataTask(urlString: urlString, httpMethod: "POST") { (error, data) in
       if let error = error {
-        print("error: \(error)")
+        completionHandler(error, nil)
       } else if let data = data {
         do {
           let rsvp = try JSONDecoder().decode(RSVP.self, from: data)
-          print(rsvp.venue.name)
+          completionHandler(nil, rsvp)
         } catch {
-          print("decoding error: \(error)")
+          completionHandler(error, nil)
         }
       }
     }
   }
-  
-  
 }

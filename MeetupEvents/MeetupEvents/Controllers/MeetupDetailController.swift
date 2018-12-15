@@ -19,6 +19,16 @@ class MeetupDetailController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     updateEventUI()
+    
+    
+    // testing rsvp
+    MeetupAPIClient.updateRSVP(eventId: "256944810", rsvpStatus: "no") { (error, rsvp) in
+      if let error = error {
+        print("error: \(error)")
+      } else if let rsvp = rsvp {
+        print("event response is \(rsvp.response)")
+      }
+    }
   }
   
   private func updateEventUI() {

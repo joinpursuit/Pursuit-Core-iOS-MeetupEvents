@@ -8,10 +8,6 @@
 
 import UIKit
 
-enum ImageError: Error {
-  case imageDataError
-}
-
 final class ImageHelper {
   static func fetchImage(urlString: String, completionHandler: @escaping (Error?, UIImage?) -> Void) {
     NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data) in
