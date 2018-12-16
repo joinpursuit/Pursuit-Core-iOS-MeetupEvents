@@ -31,7 +31,7 @@ class MeetupDetailController: UIViewController {
       } else if let events = events {
         let results = events.filter { $0.id == self.event.id }
         DispatchQueue.main.async {
-          self.rsvpStatusLabel.text = results.first != nil ? "You have RSVP'd to this event" : "You have not RSVP's to this event"
+          self.rsvpStatusLabel.text = results.first != nil ? "You have RSVP'd to this event" : "You have not RSVP'd to this event"
           self.rsvpStatusLabel.textColor = results.first != nil ? .orange : .black
           self.rsvpStatus = results.first != nil ? "yes" : "no"
         }
