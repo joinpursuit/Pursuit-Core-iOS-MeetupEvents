@@ -21,7 +21,7 @@ struct RSVP: Codable {
     let lat: Double
     let repinned: Bool
   }
-  let venue: Venue
+  let venue: Venue?
   let created: TimeInterval
   let response: String
   let rsvp_id: Int

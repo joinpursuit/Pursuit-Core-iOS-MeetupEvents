@@ -71,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aU9-cV-9zx">
-                                <rect key="frame" x="0.0" y="64" width="375" height="301.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="241"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="774-1i-ubr">
                                 <rect key="frame" x="0.0" y="426" width="375" height="241"/>
@@ -81,7 +81,20 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chl-UX-jrP">
-                                <rect key="frame" x="170.5" y="397" width="34.5" height="21"/>
+                                <rect key="frame" x="170.5" y="313" width="34.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdw-7X-TNf">
+                                <rect key="frame" x="141" y="388" width="93" height="30"/>
+                                <state key="normal" title="Update RSVP"/>
+                                <connections>
+                                    <action selector="updateRSVP:" destination="x4a-dW-NJn" eventType="touchUpInside" id="bSA-X0-tur"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSVP Status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4KY-yT-LdM">
+                                <rect key="frame" x="16" y="359.5" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -89,16 +102,22 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="774-1i-ubr" firstAttribute="height" secondItem="2Sk-8L-2Sq" secondAttribute="height" multiplier="0.4" id="70Q-Yy-l9a"/>
-                            <constraint firstItem="774-1i-ubr" firstAttribute="bottom" secondItem="2Sk-8L-2Sq" secondAttribute="bottom" id="Q4X-xB-QYA"/>
-                            <constraint firstItem="aU9-cV-9zx" firstAttribute="leading" secondItem="2Sk-8L-2Sq" secondAttribute="leading" id="be3-15-Nvn"/>
-                            <constraint firstItem="aU9-cV-9zx" firstAttribute="height" secondItem="2Sk-8L-2Sq" secondAttribute="height" multiplier="0.5" id="eyC-qB-NkF"/>
-                            <constraint firstItem="aU9-cV-9zx" firstAttribute="top" secondItem="2Sk-8L-2Sq" secondAttribute="top" id="jNo-YN-C5O"/>
-                            <constraint firstItem="774-1i-ubr" firstAttribute="top" secondItem="chl-UX-jrP" secondAttribute="bottom" constant="8" id="jQz-95-UXG"/>
-                            <constraint firstItem="chl-UX-jrP" firstAttribute="centerX" secondItem="xlx-El-bFo" secondAttribute="centerX" id="lw1-Px-xEH"/>
-                            <constraint firstItem="774-1i-ubr" firstAttribute="leading" secondItem="2Sk-8L-2Sq" secondAttribute="leading" id="vVo-yD-yRp"/>
-                            <constraint firstItem="774-1i-ubr" firstAttribute="trailing" secondItem="2Sk-8L-2Sq" secondAttribute="trailing" id="vru-Ls-59W"/>
-                            <constraint firstItem="aU9-cV-9zx" firstAttribute="trailing" secondItem="2Sk-8L-2Sq" secondAttribute="trailing" id="wIs-JL-obF"/>
+                            <constraint firstItem="gdw-7X-TNf" firstAttribute="top" secondItem="4KY-yT-LdM" secondAttribute="bottom" constant="8" id="6PP-7q-plg"/>
+                            <constraint firstItem="aU9-cV-9zx" firstAttribute="height" secondItem="2Sk-8L-2Sq" secondAttribute="height" multiplier="0.4" id="MtI-pe-ghp"/>
+                            <constraint firstItem="chl-UX-jrP" firstAttribute="top" secondItem="aU9-cV-9zx" secondAttribute="bottom" constant="8" id="QpS-qS-6YI"/>
+                            <constraint firstItem="aU9-cV-9zx" firstAttribute="leading" secondItem="2Sk-8L-2Sq" secondAttribute="leading" id="Sn5-Y7-VwL"/>
+                            <constraint firstItem="aU9-cV-9zx" firstAttribute="trailing" secondItem="2Sk-8L-2Sq" secondAttribute="trailing" id="YNB-P0-xdq"/>
+                            <constraint firstItem="774-1i-ubr" firstAttribute="bottom" secondItem="2Sk-8L-2Sq" secondAttribute="bottom" id="Zah-FF-9UQ"/>
+                            <constraint firstItem="2Sk-8L-2Sq" firstAttribute="trailing" secondItem="4KY-yT-LdM" secondAttribute="trailing" constant="16" id="a61-mx-XfP"/>
+                            <constraint firstItem="774-1i-ubr" firstAttribute="height" secondItem="2Sk-8L-2Sq" secondAttribute="height" multiplier="0.4" id="b15-hs-emP"/>
+                            <constraint firstItem="774-1i-ubr" firstAttribute="leading" secondItem="2Sk-8L-2Sq" secondAttribute="leading" id="bx0-Wo-BmK"/>
+                            <constraint firstItem="aU9-cV-9zx" firstAttribute="top" secondItem="2Sk-8L-2Sq" secondAttribute="top" id="c3G-7P-daN"/>
+                            <constraint firstItem="774-1i-ubr" firstAttribute="top" secondItem="gdw-7X-TNf" secondAttribute="bottom" constant="8" id="gjA-cD-U3C"/>
+                            <constraint firstItem="774-1i-ubr" firstAttribute="trailing" secondItem="2Sk-8L-2Sq" secondAttribute="trailing" id="hRW-0j-Kqd"/>
+                            <constraint firstItem="4KY-yT-LdM" firstAttribute="centerX" secondItem="xlx-El-bFo" secondAttribute="centerX" id="hVK-bw-Nhg"/>
+                            <constraint firstItem="chl-UX-jrP" firstAttribute="centerX" secondItem="xlx-El-bFo" secondAttribute="centerX" id="hvj-eN-T52"/>
+                            <constraint firstItem="gdw-7X-TNf" firstAttribute="centerX" secondItem="xlx-El-bFo" secondAttribute="centerX" id="jpa-9j-diq"/>
+                            <constraint firstItem="4KY-yT-LdM" firstAttribute="leading" secondItem="2Sk-8L-2Sq" secondAttribute="leading" constant="16" id="sEV-qI-XFU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Sk-8L-2Sq"/>
                     </view>
@@ -106,6 +125,7 @@
                         <outlet property="eventDescription" destination="774-1i-ubr" id="vxk-5A-eNh"/>
                         <outlet property="eventImage" destination="aU9-cV-9zx" id="IEO-bX-D2k"/>
                         <outlet property="eventLocalDate" destination="chl-UX-jrP" id="QuB-Hq-LLE"/>
+                        <outlet property="rsvpStatusLabel" destination="4KY-yT-LdM" id="rX9-uA-qxM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pK-I4-o3N" userLabel="First Responder" sceneMemberID="firstResponder"/>

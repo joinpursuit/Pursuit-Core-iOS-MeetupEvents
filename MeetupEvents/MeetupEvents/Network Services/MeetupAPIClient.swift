@@ -10,49 +10,35 @@ import Foundation
 
 final class MeetupAPIClient {
   
-  static func searchEvents(keyword: String, completionHandler: @escaping (Error?, [Event]?) -> Void) {
-    // endpoint
+  static func searchEvents(keyword: String, completionHandler: @escaping (AppError?, [Event]?) -> Void) {
     let urlString = "https://api.meetup.com/find/upcoming_events?key=\(SecretKeys.APIKey)&fields=group_photo&text=\(keyword)"
-    guard let url = URL(string: urlString) else {
-      print("badURL: \(urlString)")
-      return
-    }
-    
-    // use URLSession() to make network request to MeetupAPI
-    URLSession.shared.dataTask(with: url) { (data, response, error) in
-      if let response = response as? HTTPURLResponse {
-        print("response status code is \(response.statusCode)")
-      }
+    NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data, response) in
       if let error = error {
         completionHandler(error, nil)
       } else if let data = data {
-        // decoding of JSON using JSONDecoder()
-        // can throw and error so needs to be wrapped in a
-        // do{} catch{}
         do {
           let eventData = try JSONDecoder().decode(EventData.self, from: data)
           // closure captures value from network response
           completionHandler(nil, eventData.events)
         } catch {
-          completionHandler(error, nil)
+          completionHandler(AppError.decodingError(error), nil)
         }
       }
-    }.resume()
+    }
   }
   
   // events you have RSVP'd to , valid values are "yes" or "no"
-  static func memberEvents() {
+  static func memberEvents(completionHandler: @escaping (AppError?, [Event]?) -> Void) {
     let urlString = "https://api.meetup.com/self/events?key=\(SecretKeys.APIKey)&page=10&status=upcoming&desc=false&rsvp=yes"
-    NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data) in
-      // decode our JSON
+    NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data, response) in
       if let error = error {
-        print("error: \(error)")
+        completionHandler(error, nil)
       } else if let data = data {
         do {
           let events = try JSONDecoder().decode([Event].self, from: data)
-          print("rsvp\'d to \(events.count) events")
+          completionHandler(nil, events)
         } catch {
-          print("decoding error: \(error)")
+          completionHandler(AppError.decodingError(error), nil)
         }
       }
     }
@@ -60,17 +46,30 @@ final class MeetupAPIClient {
   
   static func updateRSVP(eventId: String,
                          rsvpStatus: String,
-                         completionHandler: @escaping(Error?, RSVP?) -> Void) {
+                         completionHandler: @escaping(AppError?, RSVP?, BadRequest?) -> Void) {
     let urlString = "https://api.meetup.com/2/rsvp?key=\(SecretKeys.APIKey)&event_id=\(eventId)&rsvp=\(rsvpStatus)"
-    NetworkHelper.performDataTask(urlString: urlString, httpMethod: "POST") { (error, data) in
+    NetworkHelper.performDataTask(urlString: urlString, httpMethod: "POST") { (error, data, response) in
       if let error = error {
-        completionHandler(error, nil)
+        completionHandler(error, nil, nil)
       } else if let data = data {
-        do {
-          let rsvp = try JSONDecoder().decode(RSVP.self, from: data)
-          completionHandler(nil, rsvp)
-        } catch {
-          completionHandler(error, nil)
+        guard let response = response else {
+          return
+        }
+        if response.statusCode >= 200 && response.statusCode < 300 {
+          do {
+            let rsvp = try JSONDecoder().decode(RSVP.self, from: data)
+            completionHandler(nil, rsvp, nil)
+          } catch {
+            completionHandler(AppError.decodingError(error), nil, nil)
+          }
+        } else {
+          // bad request - we need to use the BadRequest Model here
+          do {
+            let badRequest = try JSONDecoder().decode(BadRequest.self, from: data)
+            completionHandler(nil, nil, badRequest)
+          } catch {
+            completionHandler(AppError.decodingError(error), nil, nil)
+          }
         }
       }
     }

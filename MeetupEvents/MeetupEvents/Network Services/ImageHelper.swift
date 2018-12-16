@@ -9,8 +9,8 @@
 import UIKit
 
 final class ImageHelper {
-  static func fetchImage(urlString: String, completionHandler: @escaping (Error?, UIImage?) -> Void) {
-    NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data) in
+  static func fetchImage(urlString: String, completionHandler: @escaping (AppError?, UIImage?) -> Void) {
+    NetworkHelper.performDataTask(urlString: urlString, httpMethod: "GET") { (error, data, response) in
       if let error = error {
         completionHandler(error, nil)
       } else if let data = data {

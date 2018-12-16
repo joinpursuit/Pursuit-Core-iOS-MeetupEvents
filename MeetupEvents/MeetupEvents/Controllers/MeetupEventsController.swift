@@ -40,7 +40,7 @@ class MeetupEventsController: UIViewController {
   private func searchEvents(keyword: String) {
     MeetupAPIClient.searchEvents(keyword: keyword) { (error, events) in
       if let error = error {
-        print("error: \(error)")
+        print(error.errorMessage())
       } else if let events = events {
         self.events = events
       }

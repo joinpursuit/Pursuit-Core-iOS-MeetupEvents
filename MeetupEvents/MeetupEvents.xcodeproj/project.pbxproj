@@ -21,6 +21,8 @@
 		574C7AC921C16716004D1311 /* MeetupAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7AC821C16716004D1311 /* MeetupAPIClient.swift */; };
 		574C7ACB21C16842004D1311 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7ACA21C16842004D1311 /* SecretKeys.swift */; };
 		574C7ACD21C17534004D1311 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 574C7ACC21C17534004D1311 /* NetworkHelper.swift */; };
+		57E1749321C67794001213EB /* BadRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1749221C67794001213EB /* BadRequest.swift */; };
+		57E1749521C67B04001213EB /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E1749421C67B04001213EB /* AppError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		574C7AC821C16716004D1311 /* MeetupAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetupAPIClient.swift; sourceTree = "<group>"; };
 		574C7ACA21C16842004D1311 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		574C7ACC21C17534004D1311 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		57E1749221C67794001213EB /* BadRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadRequest.swift; sourceTree = "<group>"; };
+		57E1749421C67B04001213EB /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +71,7 @@
 			children = (
 				574C7AC621C1620F004D1311 /* Event.swift */,
 				5728A3B821C44837007BACAB /* RSVP.swift */,
+				57E1749221C67794001213EB /* BadRequest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -75,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				574C7ACC21C17534004D1311 /* NetworkHelper.swift */,
+				57E1749421C67B04001213EB /* AppError.swift */,
 				5728A3AC21C41FC7007BACAB /* ImageHelper.swift */,
 				574C7ACA21C16842004D1311 /* SecretKeys.swift */,
 				574C7AC821C16716004D1311 /* MeetupAPIClient.swift */,
@@ -206,6 +212,7 @@
 				574C7AC921C16716004D1311 /* MeetupAPIClient.swift in Sources */,
 				574C7AC721C1620F004D1311 /* Event.swift in Sources */,
 				5728A3B721C43D6E007BACAB /* Date+Extensions.swift in Sources */,
+				57E1749521C67B04001213EB /* AppError.swift in Sources */,
 				574C7AB421C1619F004D1311 /* AppDelegate.swift in Sources */,
 				5728A3B121C4395B007BACAB /* String+Extensions.swift in Sources */,
 				5728A3B921C44837007BACAB /* RSVP.swift in Sources */,
@@ -213,6 +220,7 @@
 				574C7ACB21C16842004D1311 /* SecretKeys.swift in Sources */,
 				5728A3AF21C424AA007BACAB /* MeetupDetailController.swift in Sources */,
 				5728A3AD21C41FC7007BACAB /* ImageHelper.swift in Sources */,
+				57E1749321C67794001213EB /* BadRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
