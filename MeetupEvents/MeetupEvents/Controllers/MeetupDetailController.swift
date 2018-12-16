@@ -71,7 +71,7 @@ class MeetupDetailController: UIViewController {
         print(error.errorMessage())
       } else if let rsvp = rsvp {
         DispatchQueue.main.async {
-          self.rsvpStatusLabel.text = rsvp.response == "yes" ? "You have RSVP'd to this event" : "You have not RSVP's to this event"
+          self.rsvpStatusLabel.text = rsvp.response == "yes" ? "You have RSVP'd to this event" : "You have not RSVP'd to this event"
           self.rsvpStatusLabel.textColor = rsvp.response == "yes" ? .orange : .black
         }
       } else if let badRequest = badRequest {
