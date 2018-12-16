@@ -8,8 +8,9 @@
 
 import Foundation
 
+#error ("Missing API Key")
 class SecretKeys {
   static let APIKey = ""
-  // clientId
-  // secretKey
+  // client id goes here as needed
+  // secret id goes here as needed
 }
